@@ -1,5 +1,7 @@
-git+https://github.com/openai/whisper.git
+
+\git+https://github.com/openai/whisper.git
 streamlit
 srt
 ffmpeg-python
-git+https://github.com/Zulko/moviepy.git
+moviepy==1.0.3
+imageio-ffmpeg
