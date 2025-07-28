@@ -56,7 +56,7 @@ def main():
 
         st.video(video_path)
 
-        if st.button("🚀 Generate Captions"):
+        if st.button("Generate Captions"):
             os.makedirs("audio", exist_ok=True)
             audio_path = "audio/uploaded_audio.wav"
             st.info("🔊 Extracting audio...")
@@ -73,16 +73,16 @@ def main():
             st.subheader("📝 Transcription Result")
             st.write(transcription_result.get("text", ""))
 
-            st.info("⏱️ Generating subtitles...")
+            st.info(" Generating subtitles...")
             srt_content = generate_srt(transcription_result)
             os.makedirs("captions", exist_ok=True)
             srt_path = "captions/uploaded_output.srt"
             with open(srt_path, "w", encoding="utf-8") as f:
                 f.write(srt_content)
-            st.success("✅ SRT file generated!")
+            st.success("SRT file generated!")
 
             ffmpeg_path = "ffmpeg"  # Assumes ffmpeg is in PATH
-            st.info("🔥 Burning subtitles onto video...")
+            st.info("Burning subtitles onto video...")
             output_video_path = "videos/uploaded_output_video.mp4"
             if burn_subtitles(video_path, srt_path, output_video_path, ffmpeg_path):
                 st.success("🎉 Captioned video ready!")
