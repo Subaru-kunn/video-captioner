@@ -13,16 +13,12 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-        .main {
-            background-color: #000000;
-            color: white;
+        html, body, [class*="css"] {
+            background-color: #000000 !important;
+            color: #ffffff !important;
         }
-        body {
-            background-color: #000000;
-            color: white;
-        }
-        h1, h2, h3, .stMarkdown, .stText {
-            color: white !important;
+        h1, h2, h3, h4, h5, h6, p, span, div {
+            color: #ffffff !important;
         }
         .stButton>button {
             color: white;
@@ -43,6 +39,7 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 def main():
     st.markdown("<h1 style='text-align: center;'>🎥 AI-Powered Video Caption Generator</h1>", unsafe_allow_html=True)
