@@ -65,7 +65,7 @@ def main():
                 st.error("Failed to extract audio.")
                 return
 
-            st.info("🧠 Transcribing audio...")
+            st.info(" Transcribing audio...")
             transcription_result = transcribe_audio(audio_path)
             if not transcription_result:
                 st.error("Failed to transcribe audio.")
@@ -83,10 +83,10 @@ def main():
                 f.write(srt_content)
 
             ffmpeg_path = "ffmpeg"  # Ensure ffmpeg is in PATH
-            st.info("🎞️ Burning subtitles onto video...")
+            st.info(" Burning subtitles onto video...")
             output_video_path = "videos/uploaded_output_video.mp4"
             if burn_subtitles(video_path, srt_path, output_video_path, ffmpeg_path):
-                st.success("🎉 Captioned video ready!")
+                st.success(" Captioned video ready !!!")
                 st.video(output_video_path)
             else:
                 st.error("⚠️ Failed to burn subtitles onto video.")
