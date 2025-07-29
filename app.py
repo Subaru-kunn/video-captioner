@@ -5,21 +5,24 @@ from modules.transcribe_audio import transcribe_audio
 from modules.generate_srt import generate_srt
 from modules.burn_caption import burn_subtitles
 
-# --- Page config and custom CSS ---
 st.set_page_config(
     page_title="Video Caption Generator",
-    layout="centered",  # Center layout
+    layout="centered",
     initial_sidebar_state="auto"
 )
 
 st.markdown("""
     <style>
         .main {
-            background-color: #111827;
+            background-color: #000000;
             color: white;
         }
-        h1, h2, h3 {
+        body {
+            background-color: #000000;
             color: white;
+        }
+        h1, h2, h3, .stMarkdown, .stText {
+            color: white !important;
         }
         .stButton>button {
             color: white;
@@ -41,7 +44,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- Main app ---
 def main():
     st.markdown("<h1 style='text-align: center;'>🎥 AI-Powered Video Caption Generator</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center;'>Upload a video and generate intelligent captions with a single click!</p>", unsafe_allow_html=True)
@@ -73,16 +75,16 @@ def main():
             st.subheader("📝 Transcription Result")
             st.write(transcription_result.get("text", ""))
 
-            st.info(" Generating subtitles...")
+ # Show this before generating subtitles
+            st.info("📝 Generating subtitles...")
             srt_content = generate_srt(transcription_result)
             os.makedirs("captions", exist_ok=True)
             srt_path = "captions/uploaded_output.srt"
             with open(srt_path, "w", encoding="utf-8") as f:
                 f.write(srt_content)
-            st.success("SRT file generated!")
 
-            ffmpeg_path = "ffmpeg"  # Assumes ffmpeg is in PATH
-            st.info("Burning subtitles onto video...")
+            ffmpeg_path = "ffmpeg" 
+            st.info("🎞️ Burning subtitles onto video...")
             output_video_path = "videos/uploaded_output_video.mp4"
             if burn_subtitles(video_path, srt_path, output_video_path, ffmpeg_path):
                 st.success("🎉 Captioned video ready!")

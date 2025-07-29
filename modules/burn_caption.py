@@ -9,7 +9,7 @@ def burn_subtitles(video_path, srt_path, output_path, ffmpeg_path="ffmpeg"):
 
     command = [
         ffmpeg_path,
-        "-y",  # overwrite without prompt
+        "-y", 
         "-i", video_full,
         "-vf", f"subtitles='{srt_full}'",
         output_full
