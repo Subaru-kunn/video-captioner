@@ -11,3 +11,4 @@ Video Captioner is a simple and modular Streamlit web app that automatically gen
 - Burns subtitles into the video using FFmpeg
 
 ---
+![Video Captioner Demo](image.png)
